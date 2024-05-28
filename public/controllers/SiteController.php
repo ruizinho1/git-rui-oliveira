@@ -9,6 +9,8 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\UsersSearch;
+
 
 class SiteController extends Controller
 {
@@ -16,27 +18,22 @@ class SiteController extends Controller
      * {@inheritdoc}
      */
     public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
+{
+    return [
+        'access' => [
+            'class' => AccessControl::class,
+            'only' => ['logout', 'registos'], // Adicione 'registos' aqui
+            'rules' => [
+                [
+                    'actions' => ['logout', 'registos'], // E aqui
+                    'allow' => true,
+                    'roles' => ['@'],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
+        ],
+        // ...
+    ];
+}
 
     /**
      * {@inheritdoc}
@@ -125,4 +122,18 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionRegistos()
+{
+    $searchModel = new UsersSearch();
+    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+    return $this->render('/users/index', [
+        'searchModel' => $searchModel,
+        'dataProvider' => $dataProvider,
+    ]);
+}
+
+    
+
 }

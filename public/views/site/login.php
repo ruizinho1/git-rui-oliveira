@@ -43,12 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
 
-            <div class="form-group">
-                <div>
-                    <?= Html::a('Registos!', ['users/index'], ['class' => 'btn btn-link']) ?>
-                </div>
-            </div>
-
             <?php ActiveForm::end(); ?>
 
         </div>

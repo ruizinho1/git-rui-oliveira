@@ -52,6 +52,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     )
                     . Html::endForm()
                     . '</li>'
+                    . '<li class="nav-item">'
+            . Html::a('Registos', ['/site/registos'], ['class' => 'nav-link'])
+            . '</li>'
         ]
     ]);
     NavBar::end();
