@@ -1,0 +1,13 @@
+Options +FollowSymLinks
+IndexIgnore /
+RewriteEngine on
+
+# if request begins with /.well-known remove api and add /.well-known/acme-challenge
+RewriteCond %{REQUEST_URI} ^/.well-known
+RewriteRule ^.well-known/acme-challenge/\/?(.*) /.well-known/acme-challenge/$1
+
+
+ 
+# other requests add /web/$1
+RewriteCond %{REQUEST_URI} !^/(web|.well-known)
+RewriteRule (.*) /web/index.php/$1
