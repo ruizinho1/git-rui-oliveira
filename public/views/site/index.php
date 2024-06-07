@@ -10,6 +10,8 @@ $this->title = 'MercedesMotors';
 $this->registerCss("
 body {
     background-color: #d0d0d0; /* Cor de fundo cinza claro */
+    position: relative;
+    z-index: 0;
 }
 
 .carousel-img {
@@ -26,6 +28,8 @@ body {
 
 .statistic {
     padding: 20px;
+    position: relative; /* Garantir que estatísticas fiquem sobre o vídeo */
+    z-index: 2;
 }
 
 .statistic-inner {
@@ -45,6 +49,8 @@ body {
     max-width: 1200px; /* Definir um max-width para centralizar o conteúdo */
     margin-left: auto;
     margin-right: auto;
+    z-index: 2; /* Garantir que notícias fiquem sobre o vídeo */
+    position: relative;
 }
 
 .news-item {
@@ -99,38 +105,45 @@ body {
     background-color: #555;
 }
 
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 50%; /* Posiciona o vídeo no meio da tela horizontalmente */
+    transform: translateX(-50%); /* Corrige a posição do vídeo */
+    width: 80%; /* Define a largura do vídeo */
+    z-index: -1; /* Coloca o vídeo atrás de todo o conteúdo */
+}
+
+#carroVideo {
+    width: 100%; /* Faz o vídeo cobrir toda a largura do contêiner */
+    height: auto; /* Mantém a proporção original do vídeo */
+}
+
+.jumbotron {
+    margin-top: 300px; /* Move o jumbotron para baixo para dar espaço para o vídeo */
+    position: relative;
+    z-index: 1;
+}
 ");
 
 ?>
 
 <div class="site-index">
 
-    <div class="jumbotron text-center bg-transparent mt-5 mb-5">
-        <div class="carousel-background"> <!-- Caixa com fundo colorido -->
-            <?= Carousel::widget([
-                'items' => [
-                    [
-                        'content' => '<img src="' . Url::to('@web/imagens/mercedes.jpg') . '" alt="Slide 1"/>',
-                        'caption' => '<h4>Slide 1</h4><p>GLE 450 d 4MATIC Coupé</p>',
-                    ],
-                    [
-                        'content' => '<img src="' . Url::to('@web/imagens/mercedes1.jpg') . '" alt="Slide 2"/>',
-                        'caption' => '<h4>Slide 2</h4><p>AMG G 63</p>',
-                    ],
-                    [
-                        'content' => '<img src="' . Url::to('@web/imagens/mercedes2.jpg') . '" alt="Slide 3"/>',
-                        'caption' => '<h4>Slide 3</h4><p>Mercedes-AMG One</p>',
-                    ],
-                ],
-            ]) ?>
-        </div>
+    <div class="video-background">
+        <video autoplay muted loop id="carroVideo">
+            <source src="<?= Url::to('@web/videos/carro.mp4') ?>" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo HTML5.
+        </video>
     </div>
+
+
 
     <div class="body-content">
         <div class="row">
             <div class="col-lg-3 statistic">
                 <div class="statistic-inner">
-                    <h2> US$ 70.000.</h2>
+                    <h2>US$ 70.000.</h2>
                     <p>Iniciando o MSRP</p>
                 </div>
             </div>
@@ -224,4 +237,3 @@ body {
     </div>
 
 </div>
-
