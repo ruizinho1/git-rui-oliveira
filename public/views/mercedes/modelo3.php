@@ -4,6 +4,13 @@ use yii\helpers\Url;
 
 $this->title = 'Mercedes Classe B';
 $this->params['breadcrumbs'][] = $this->title;
+$css = <<< CSS
+body {
+    background-color: #d0d0d0;
+}
+CSS;
+
+$this->registerCss($css);
 ?>
 
 <div class="mercedes-modelos">

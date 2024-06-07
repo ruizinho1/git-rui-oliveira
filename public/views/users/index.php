@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('<span class="glyphicon glyphicon-plus"></span> ' . Yii::t('app', 'Create User'), ['users/create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="bi bi-plus-lg"></i> ' . Yii::t('app', 'Create User'), ['users/create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <div class="table-container">
@@ -38,13 +38,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     'template' => '{view} {update} {delete}',
                     'buttons' => [
                         'view' => function ($url, $model, $key) {
-                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, ['title' => 'View', 'class' => 'btn btn-primary btn-sm']);
+                            return Html::a('<i class="bi bi-eye"></i>', $url, ['title' => 'View', 'class' => 'btn btn-primary btn-sm']);
                         },
                         'update' => function ($url, $model, $key) {
-                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, ['title' => 'Update', 'class' => 'btn btn-warning btn-sm']);
+                            return Html::a('<i class="bi bi-pencil"></i>', $url, ['title' => 'Update', 'class' => 'btn btn-warning btn-sm']);
                         },
                         'delete' => function ($url, $model, $key) {
-                            return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+                            return Html::a('<i class="bi bi-trash"></i>', $url, [
                                 'title' => 'Delete',
                                 'class' => 'btn btn-danger btn-sm',
                                 'data' => [
@@ -92,11 +92,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
-
 <?php
 $customCss = <<<CSS
     body {
-        background-color: #f5f5f5; /* Fundo claro para a página toda */
+        background-color: #d0d0d0; /* Fundo claro para a página toda */
     }
     .users-index {
         padding: 20px;
@@ -137,4 +136,3 @@ $(document).ready(function(){
 JS;
 $this->registerJs($script);
 ?>
-

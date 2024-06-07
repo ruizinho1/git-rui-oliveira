@@ -111,15 +111,15 @@ body {
                 'items' => [
                     [
                         'content' => '<img src="' . Url::to('@web/imagens/mercedes.jpg') . '" alt="Slide 1"/>',
-                        'caption' => '<h4>Slide 1</h4><p>Descrição do slide 1</p>',
+                        'caption' => '<h4>Slide 1</h4><p>GLE 450 d 4MATIC Coupé</p>',
                     ],
                     [
                         'content' => '<img src="' . Url::to('@web/imagens/mercedes1.jpg') . '" alt="Slide 2"/>',
-                        'caption' => '<h4>Slide 2</h4><p>Descrição do slide 2</p>',
+                        'caption' => '<h4>Slide 2</h4><p>AMG G 63</p>',
                     ],
                     [
                         'content' => '<img src="' . Url::to('@web/imagens/mercedes2.jpg') . '" alt="Slide 3"/>',
-                        'caption' => '<h4>Slide 3</h4><p>Descrição do slide 3</p>',
+                        'caption' => '<h4>Slide 3</h4><p>Mercedes-AMG One</p>',
                     ],
                 ],
             ]) ?>

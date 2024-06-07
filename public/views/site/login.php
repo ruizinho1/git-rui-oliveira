@@ -9,6 +9,14 @@ use yii\bootstrap5\Html;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
+
+$css = <<< CSS
+body {
+    background-color: #d0d0d0;
+}
+CSS;
+
+$this->registerCss($css);
 ?>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -33,7 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'password')->passwordInput() ?>
 
             <a href="<?= \yii\helpers\Url::to(['site/request-password-reset']) ?>">Esqueceu sua senha?</a>
-
 
             <?= $form->field($model, 'rememberMe')->checkbox([
                 'template' => "<div class=\"custom-control custom-checkbox\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",

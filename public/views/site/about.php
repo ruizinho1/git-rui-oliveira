@@ -8,9 +8,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 // Estilo CSS personalizado
 $css = <<< CSS
-/* Estilo personalizado para a página "Sobre" */
 body {
-    background-color: #f4f4f4; /* Cor de fundo preto claro */
+    background-color: #d0d0d0; 
 }
 
 .site-about {
@@ -65,7 +64,6 @@ body {
     border-color: #0056b3;
 }
 
-/* Estilo para os banners laterais */
 .flash-banner {
     position: fixed;
     top: 50%;
@@ -93,7 +91,6 @@ body {
 }
 CSS;
 
-// Registrando o estilo CSS
 $this->registerCss($css);
 
 ?>
@@ -117,31 +114,31 @@ $this->registerCss($css);
     <div class="row">
         <div class="col-lg-4">
             <div class="card">
-                <img src="<?= Url::to('@web/imagens/mercedesT.jpg') ?>" class="card-img-top" alt="Modelo 1">
+                <img src="<?= Url::to('@web/imagens/mercedesa180cdi.jpg') ?>" class="card-img-top" alt="Modelo 1">
                 <div class="card-body">
-                    <h5 class="card-title">Modelo 1</h5>
-                    <p class="card-text">Descrição breve do Modelo 1 em promoção.</p>
-                    <a href="<?= Url::to(['mercedes/modelo1']) ?>" class="btn btn-primary">Saiba Mais</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="card">
-                <img src="<?= Url::to('@web/imagens/mercedesA.jpg') ?>" class="card-img-top" alt="Modelo 2">
-                <div class="card-body">
-                    <h5 class="card-title">Modelo 2</h5>
-                    <p class="card-text">Descrição breve do Modelo 2 em promoção.</p>
+                    <h5 class="card-title">Mercedes A 180 CDI (BlueEFFICIENCY)</h5>
+                    <p class="card-text">O Mercedes A 180 CDI (BlueEFFICIENCY) é um carro compacto equipado com um motor diesel de 1.5 litros e 109 cavalos de potência. Este modelo é conhecido pela sua eficiência de combustível e baixas emissões devido à tecnologia BlueEFFICIENCY.</p>
                     <a href="<?= Url::to(['mercedes/modelo2']) ?>" class="btn btn-primary">Saiba Mais</a>
                 </div>
             </div>
         </div>
         <div class="col-lg-4">
             <div class="card">
-                <img src="<?= Url::to('@web/imagens/mercedesC.jpg') ?>" class="card-img-top" alt="Modelo 3">
+                <img src="<?= Url::to('@web/imagens/mercedesc200.jpg') ?>" class="card-img-top" alt="Modelo 2">
                 <div class="card-body">
-                    <h5 class="card-title">Modelo 3</h5>
-                    <p class="card-text">Descrição breve do Modelo 3 em promoção.</p>
-                    <a href="<?= Url::to(['mercedes/modelo3']) ?>" class="btn btn-primary">Saiba Mais</a>
+                    <h5 class="card-title">Mercedes C 200</h5>
+                    <p class="card-text">Este modelo é alimentado por combustível híbrido, oferecendo uma experiência de condução suave e poderosa, com um interior luxuoso e tecnologia avançada.</p>
+                    <a href="<?= Url::to(['mercedes/modelo4']) ?>" class="btn btn-primary">Saiba Mais</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <img src="<?= Url::to('@web/imagens/mercedesS350D.jpg') ?>" class="card-img-top" alt="Modelo 3">
+                <div class="card-body">
+                    <h5 class="card-title">Mercedes S350D</h5>
+                    <p class="card-text">O Mercedes S350D é um carro de luxo com um motor diesel V6 de 2987 cm³ e 286 cavalos de potência. Oferece uma experiência de condução suave e poderosa, com um interior luxuoso e tecnologia avançada. É verdadeiramente uma obra-prima da engenharia automotiva moderna.</p>
+                    <a href="<?= Url::to(['mercedes/modelo1']) ?>" class="btn btn-primary">Saiba Mais</a>
                 </div>
             </div>
         </div>

@@ -122,6 +122,7 @@ class MercedesController extends Controller
                 'potencia' => '362 HP / 367 PS / 270 kW',
                 'aceleracao' => '5.1 segundos',
                 'preco' => '€80.000',
+                'ano' => '2018', 
                 'tipo de combustivel' => 'Gasolina',
                 'consumo' => '6.6-6.6 l/100 km',
             ],

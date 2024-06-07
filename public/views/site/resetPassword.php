@@ -4,6 +4,13 @@ use yii\bootstrap5\ActiveForm;
 
 $this->title = 'Redefinir Senha';
 $this->params['breadcrumbs'][] = $this->title;
+$css = <<< CSS
+body {
+    background-color: #d0d0d0;
+}
+CSS;
+
+$this->registerCss($css);
 ?>
 <div class="site-reset-password">
     <h1><?= Html::encode($this->title) ?></h1>

@@ -10,6 +10,13 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+$css = <<< CSS
+body {
+    background-color: #d0d0d0;
+}
+CSS;
+
+$this->registerCss($css);
 ?>
 <div class="users-view">
 

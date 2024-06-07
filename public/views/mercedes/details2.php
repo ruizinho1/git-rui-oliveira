@@ -5,6 +5,13 @@ use yii\helpers\Url;
 $this->title = $modelo['nome'];
 $this->params['breadcrumbs'][] = ['label' => 'Modelos Mercedes - Página 2', 'url' => ['modelo2']];
 $this->params['breadcrumbs'][] = $this->title;
+$css = <<< CSS
+body {
+    background-color: #d0d0d0;
+}
+CSS;
+
+$this->registerCss($css);
 ?>
 
 <div class="mercedes-details">

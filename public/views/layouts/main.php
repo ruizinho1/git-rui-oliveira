@@ -13,7 +13,7 @@ use yii\helpers\Url;
 
 AppAsset::register($this);
 
-$this->registerCsrfMetaTags();
+$this->registerCsrfMetaTags(); 
 $this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');
 $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no']);
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
@@ -24,10 +24,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.2/font/bootstrap-icons.min.css">
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <style>
-    /* O estilo do menu lateral */
     .sidebar {
         height: 100%;
         width: 0;
