@@ -10,6 +10,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@app' => dirname(__DIR__),
     ],
     'components' => [
         'request' => [
@@ -27,11 +28,26 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'mailer' => [
-            'class' => \yii\symfonymailer\Mailer::class,
+            'class' => 'yii\symfonymailer\Mailer',
             'viewPath' => '@app/mail',
-            // send all mails to a file by default.
-            'useFileTransport' => true,
+            'transport' => [
+                'class' => 'Symfony\Component\Mailer\Bridge\Google\Smtp\GmailTransport',
+                'dsn' => 'smtp://manelaugusto025@gmail.com:papehykijeoybixa@smtp.gmail.com:587',
+            ],
         ],
+              
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                ],
+            ],
+        ],
+        
+        
+        
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -42,14 +58,18 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'marca/<id:\d+>/modelos' => 'marca/modelos',
+                'users/create' => 'users/create',
+                'users/update/<id:\d+>' => 'users/update',
+                'users/view/<id:\d+>' => 'users/view',
+                'users/delete/<id:\d+>' => 'users/delete',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];

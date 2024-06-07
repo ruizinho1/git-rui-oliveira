@@ -1,7 +1,7 @@
 <?php
 
 namespace app\controllers;
-
+use Yii;
 use app\models\Users;
 use app\models\UsersSearch;
 use yii\web\Controller;
@@ -69,14 +69,10 @@ class UsersController extends Controller
     {
         $model = new Users();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
-
+    
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -132,3 +128,4 @@ class UsersController extends Controller
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 }
+

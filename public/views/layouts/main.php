@@ -9,6 +9,7 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 
@@ -25,17 +26,57 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <head>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <style>
+    /* O estilo do menu lateral */
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+    }
+
+    #main {
+        transition: margin-left 0.5s;
+        padding: 16px;
+    }
+    </style>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
 <header id="header">
     <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
-    ]);
+NavBar::begin([
+    'brandLabel' => '<img src="' . Url::to('@web/imagens/icone.jpg') . '" alt="Mercedes Icon" class="mr-2">' . Yii::$app->name,
+    'brandUrl' => Yii::$app->homeUrl,
+    'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
+]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
@@ -55,11 +96,24 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     . '<li class="nav-item">'
             . Html::a('Registos', ['/site/registos'], ['class' => 'nav-link'])
             . '</li>'
+            // Adicionando o botão Modelos ao menu
+            ,'<li class="nav-item">'
+            . Html::button('Modelos', ['class' => 'nav-link btn btn-link', 'id' => 'menu-toggle'])
+            . '</li>'
         ]
     ]);
     NavBar::end();
     ?>
 </header>
+
+<div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="<?= Url::to(['mercedes/modelo1']) ?>">Mercedes Classe S</a>
+    <a href="<?= Url::to(['mercedes/modelo2']) ?>">Mercedes Classe A</a>
+    <a href="<?= Url::to(['mercedes/modelo3']) ?>">Mercedes Classe B</a>
+    <a href="<?= Url::to(['mercedes/modelo4']) ?>">Mercedes Classe C</a>
+    <a href="<?= Url::to(['mercedes/modelo5']) ?>">Mercedes Classe E</a>
+</div>
 
 <main id="main" class="flex-shrink-0" role="main">
     <div class="container">
@@ -81,6 +135,26 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 </footer>
 
 <?php $this->endBody() ?>
+<script>
+function openNav() {
+    document.getElementById("sidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("sidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+
+document.getElementById("menu-toggle").onclick = function() {
+    var sidebar = document.getElementById("sidebar");
+    if (sidebar.style.width === "250px") {
+        closeNav();
+    } else {
+        openNav();
+    }
+};
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>
