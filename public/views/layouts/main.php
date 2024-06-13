@@ -71,38 +71,34 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <?php $this->beginBody() ?>
 
 <header id="header">
-    <?php
-NavBar::begin([
-    'brandLabel' => '<img src="' . Url::to('@web/imagens/icone.jpg') . '" alt="Mercedes Icon" class="mr-2">' . Yii::$app->name,
-    'brandUrl' => Yii::$app->homeUrl,
-    'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
-]);
+<?php
+    NavBar::begin([
+        'brandLabel' => '<img src="' . Url::to('@web/imagens/icone.jpg') . '" alt="Mercedes Icon" class="mr-2">' . Yii::$app->name,
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top'],
+    ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
+        'options' => ['class' => 'navbar-nav ml-auto'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest
                 ? ['label' => 'Login', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>'
-                    . '<li class="nav-item">'
-            . Html::a('Registos', ['/site/registos'], ['class' => 'nav-link'])
-            . '</li>'
-            // Adicionando o botão Modelos ao menu
-            ,'<li class="nav-item">'
-            . Html::button('Modelos', ['class' => 'nav-link btn btn-link', 'id' => 'menu-toggle'])
-            . '</li>'
-        ]
+                : [
+                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                    'url' => ['/site/logout'],
+                    'linkOptions' => ['data-method' => 'post']
+                ],
+            ['label' => 'Registos', 'url' => ['/site/registos']],
+            ['label' => 'Modelos', 'url' => '#', 'linkOptions' => ['id' => 'menu-toggle']],
+            Yii::$app->user->isGuest
+                ? ['label' => '', 'url' => '#']
+                : ['label' => 'Notícias', 'url' => ['/noticias/index'], 'visible' => !Yii::$app->user->isGuest],
+        ],
     ]);
     NavBar::end();
+    ?>
     ?>
 </header>
 

@@ -25,10 +25,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout', 'registos'],
+                'only' => ['logout', 'registos', 'noticias'],
                 'rules' => [
                     [
-                        'actions' => ['logout', 'registos'],
+                        'actions' => ['logout', 'registos', 'noticias'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -43,7 +43,6 @@ class SiteController extends Controller
             ],
         ];
     }
-    
 
     /**
      * {@inheritdoc}
@@ -68,8 +67,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
-    }
+        $noticias = \app\models\Noticias::find()->all();
+    
+        return $this->render('index', [
+            'noticias' => $noticias,
+        ]);    }
 
     /**
      * Login action.
@@ -142,6 +144,12 @@ class SiteController extends Controller
         'searchModel' => $searchModel,
         'dataProvider' => $dataProvider,
     ]);
+}
+
+public function actionNoticias()
+{
+    // Aqui você pode adicionar lógica para exibir todas as notícias ou redirecionar para uma ação específica
+    return $this->render('noticias');
 }
 
 public function actionRequestPasswordReset()
